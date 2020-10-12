@@ -8,24 +8,34 @@ public class Bonverter {
     public static void main(String[] args) {
         
         createHeader("Welcome to the B o n v e r t e r");
-        ArrayList<String> plainText = new ArrayList<>();
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter the sentence you would like to 'Bonvert' ;)");
-        String userInput = input.nextLine();
-        for(String s : userInput.split(" ")){
-            plainText.add(s);
-        }
-        input.close();
-
-
-        //BONVERT TIME
-        plainText = bonvertText(plainText);
-
-        for(String s : plainText){
-            System.out.printf("%s ", s);
-        }
-        System.out.println();
+        boolean gatheringInput = true;
+        
+        while (gatheringInput)
+        {
+            ArrayList<String> plainText = new ArrayList<>();
+            System.out.println("Please enter the sentence you would like to 'Bonvert' (Type END to stop)");
+            String userInput = input.nextLine();
+            if(userInput.equals("END")){
+                gatheringInput = false;
+                return;
+            }
+            for(String s : userInput.split(" ")){
+                plainText.add(s);
+            }
+            // input.close();
     
+    
+            //BONVERT TIME
+            plainText = bonvertText(plainText);
+    
+            for(String s : plainText){
+                System.out.printf("%s ", s);
+            }
+            System.out.println("\n");           
+
+        }
+        
     }
     
     public static void createHeader(String header)
